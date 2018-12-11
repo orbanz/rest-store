@@ -4,10 +4,7 @@ import com.orbanz.store.common.ErrorDetails;
 import com.orbanz.store.product.Product;
 import com.orbanz.store.product.ProductNotFoundException;
 import com.orbanz.store.product.ProductRepository;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +44,7 @@ public class OrderController {
     @PostMapping("/orders")
     @ApiOperation(value = "Place order")
     @ApiResponse(code = 401, message = "The created order")
-    public ResponseEntity<Object> placeOrder(@RequestBody WebOrder webOrder) {
+    public ResponseEntity<Object> placeOrder(@ApiParam(required = true, name = "webOrder", value = "Order data") @RequestBody WebOrder webOrder) {
         OrderData orderData = new OrderData(webOrder.getBuyerEmail(), webOrder.getOrderPlaced());
         for (Long productId : webOrder.getProducts()) {
             Optional<Product> optionalProduct = productRepository.findById(productId);
@@ -81,9 +78,9 @@ public class OrderController {
         }
     }
 
-
+    @ApiOperation(value = "Get Order Data", notes = "Retreiving the data for the given id", response = OrderData.class)
     @GetMapping("/orders/{id}")
-    public OrderData retrieveOrder(@PathVariable long id) {
+    public OrderData retrieveOrder(@ApiParam(required = true, name = "id", value = "ID os the Order") @PathVariable long id) {
         Optional<OrderData> order = orderDataRepository.findById(id);
 
         if(!order.isPresent()) {

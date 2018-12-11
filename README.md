@@ -9,7 +9,7 @@ This application is Spring Boot application which has Tomcat 8 embedded. No Tomc
 * You can build the project and run the tests by running ```mvn clean package```
 * Once successfully built, you can run the service the following way:
 ```
-        mvn spring-boot:run"
+        mvn spring-boot:run
 ```
 
 **Version:** 1.0
@@ -123,13 +123,13 @@ zoltan.orban@gmail.com
 | 404 | Not Found |  |
 
 ##### ***POST***
-**Summary:** placeOrder
+**Summary:** Place order
 
 **Parameters**
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| webOrder | body | webOrder | Yes | [WebOrder](#weborder) |
+| webOrder | body | Order data | Yes | [WebOrder](#weborder) |
 
 **Responses**
 
@@ -137,6 +137,28 @@ zoltan.orban@gmail.com
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 | 201 | Created |  |
+| 401 | Unauthorized |  |
+| 403 | Forbidden |  |
+| 404 | Not Found |  |
+
+### /orders/{id}
+---
+##### ***GET***
+**Summary:** Get Order Data
+
+**Description:** Retreiving the data for the given id
+
+**Parameters**
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | ID os the Order | Yes | long |
+
+**Responses**
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [OrderData](#orderdata) |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 | 404 | Not Found |  |
