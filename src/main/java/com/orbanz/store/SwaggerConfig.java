@@ -28,7 +28,18 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "REST Store API",
-                "RESTful webservice for a simple store app.",
+                "RESTful webservice for a simple store app." +
+                        "## How to Run \n" +
+                        "\n" +
+                        "This application is Spring Boot application which has Tomcat 8 embedded. No Tomcat or JBoss installation is necessary.\n" +
+                        "\n" +
+                        "* Clone this repository \n" +
+                        "* Make sure you are using JDK 1.8 and Maven 3.x\n" +
+                        "* You can build the project and run the tests by running ```mvn clean package```\n" +
+                        "* Once successfully built, you can run the service the following way:\n" +
+                        "```\n" +
+                        "        mvn spring-boot:run\"\n" +
+                        "```",
                 "1.0",
                 "urn:tos",
                 new Contact("Zoltan Orban", "", "zoltan.orban@gmail.com"),
