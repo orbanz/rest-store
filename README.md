@@ -1,6 +1,16 @@
 REST Store API
 ==============
-RESTful webservice for a simple store app.
+RESTful webservice for a simple store app.## How to Run 
+
+This application is Spring Boot application which has Tomcat 8 embedded. No Tomcat or JBoss installation is necessary.
+
+* Clone this repository 
+* Make sure you are using JDK 1.8 and Maven 3.x
+* You can build the project and run the tests by running ```mvn clean package```
+* Once successfully built, you can run the service the following way:
+```
+        mvn spring-boot:run"
+```
 
 **Version:** 1.0
 
@@ -16,75 +26,75 @@ zoltan.orban@gmail.com
 ### /error
 ---
 ##### ***GET***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 | 404 | Not Found |  |
 
 ##### ***POST***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 201 | Created |  |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 | 404 | Not Found |  |
 
 ##### ***PUT***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 201 | Created |  |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 | 404 | Not Found |  |
 
 ##### ***DELETE***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 204 | No Content |  |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 
 ##### ***OPTIONS***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 204 | No Content |  |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 
 ##### ***PATCH***
-**Summary:** error
+**Summary:** errorHtml
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | [ModelAndView](#modelandview) |
 | 204 | No Content |  |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
