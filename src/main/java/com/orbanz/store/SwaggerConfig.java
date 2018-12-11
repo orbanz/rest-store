@@ -38,7 +38,7 @@ public class SwaggerConfig {
                         "* You can build the project and run the tests by running ```mvn clean package```\n" +
                         "* Once successfully built, you can run the service the following way:\n" +
                         "```\n" +
-                        "        mvn spring-boot:run\"\n" +
+                        "        mvn spring-boot:run\n" +
                         "```",
                 "1.0",
                 "urn:tos",

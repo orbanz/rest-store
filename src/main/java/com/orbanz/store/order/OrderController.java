@@ -1,5 +1,6 @@
 package com.orbanz.store.order;
 
+import com.orbanz.store.common.ErrorDetails;
 import com.orbanz.store.product.Product;
 import com.orbanz.store.product.ProductNotFoundException;
 import com.orbanz.store.product.ProductRepository;
@@ -8,8 +9,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -27,7 +30,23 @@ public class OrderController {
     @Autowired
     ProductRepository productRepository;
 
+    @ExceptionHandler(OrderNotFoundException.class)
+    public final ResponseEntity<ErrorDetails> handleOrderNotFoundException(OrderNotFoundException ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(),
+                request.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @PostMapping("/orders")
+    @ApiOperation(value = "Place order")
+    @ApiResponse(code = 401, message = "The created order")
     public ResponseEntity<Object> placeOrder(@RequestBody WebOrder webOrder) {
         OrderData orderData = new OrderData(webOrder.getBuyerEmail(), webOrder.getOrderPlaced());
         for (Long productId : webOrder.getProducts()) {
@@ -61,4 +80,17 @@ public class OrderController {
             return orderDataRepository.findAll();
         }
     }
+
+
+    @GetMapping("/orders/{id}")
+    public OrderData retrieveOrder(@PathVariable long id) {
+        Optional<OrderData> order = orderDataRepository.findById(id);
+
+        if(!order.isPresent()) {
+            throw new OrderNotFoundException("id-" + id);
+        }
+
+        return order.get();
+    }
+
 }
