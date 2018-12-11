@@ -1,6 +1,11 @@
 package com.orbanz.store.product;
 
 import com.orbanz.store.common.ErrorDetails;
+import com.orbanz.store.order.OrderData;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,16 +39,22 @@ public class ProductController {
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+
     @GetMapping("/products")
+    @ApiOperation(value = "Get Product List", notes = "Retriev all Products", response = Product[].class)
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "Success", response = Product[].class)
+    })
     public List<Product> getProductList() {
         return productRepository.findAll();
     }
 
     @GetMapping("/products/{id}")
-    public Product retrieveProduct(@PathVariable long id) {
+    @ApiOperation(value = "Get Product", notes = "Retreiving the Product with the given ID", response = Product.class)
+    public Product retrieveProduct(@ApiParam(required = true, name = "id", value = "ID os the Product") @PathVariable long id) {
         Optional<Product> product = productRepository.findById(id);
 
-        if(!product.isPresent()) {
+        if (!product.isPresent()) {
             throw new ProductNotFoundException("id-" + id);
         }
 
@@ -51,7 +62,8 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Object> createProduct(@RequestBody Product product) {
+    @ApiOperation(value = "Create Product", notes = "Create the product with the given data")
+    public ResponseEntity<Object> createProduct(@ApiParam(required = true, name = "product", value = "Product data") @RequestBody Product product) {
         Product savedProduct = productRepository.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedProduct.getId()).toUri();
@@ -60,10 +72,11 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    public ResponseEntity<Object> updateProduct(@RequestBody Product product, @PathVariable long id) {
+    @ApiOperation(value = "Update Product", notes = "Update the product data with the given ID")
+    public ResponseEntity<Object> updateProduct(@ApiParam(required = true, name = "product", value = "Product data") @RequestBody Product product, @ApiParam(required = true, name = "id", value = "ID os the Product") @PathVariable long id) {
         Optional<Product> originalProduct = productRepository.findById(id);
 
-        if(!originalProduct.isPresent()) {
+        if (!originalProduct.isPresent()) {
             return ResponseEntity.notFound().build();
         }
 

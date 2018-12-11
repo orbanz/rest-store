@@ -72,7 +72,7 @@ zoltan.orban@gmail.com
 ##### ***GET***
 **Summary:** Get Order Data
 
-**Description:** Retreiving the data for the given id
+**Description:** Retreiving the Order with the given ID
 
 **Parameters**
 
@@ -92,25 +92,29 @@ zoltan.orban@gmail.com
 ### /products
 ---
 ##### ***GET***
-**Summary:** getProductList
+**Summary:** Get Product List
+
+**Description:** Retriev all Products
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | [ [Product](#product) ] |
+| 200 | Success | [ [Product](#product) ] |
 | 401 | Unauthorized |  |
 | 403 | Forbidden |  |
 | 404 | Not Found |  |
 
 ##### ***POST***
-**Summary:** createProduct
+**Summary:** Create Product
+
+**Description:** Create the product with the given data
 
 **Parameters**
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| product | body | product | Yes | [Product](#product) |
+| product | body | Product data | Yes | [Product](#product) |
 
 **Responses**
 
@@ -125,13 +129,15 @@ zoltan.orban@gmail.com
 ### /products/{id}
 ---
 ##### ***GET***
-**Summary:** retrieveProduct
+**Summary:** Get Product
+
+**Description:** Retreiving the Product with the given ID
 
 **Parameters**
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | id | Yes | long |
+| id | path | ID os the Product | Yes | long |
 
 **Responses**
 
@@ -143,14 +149,16 @@ zoltan.orban@gmail.com
 | 404 | Not Found |  |
 
 ##### ***PUT***
-**Summary:** updateProduct
+**Summary:** Update Product
+
+**Description:** Update the product data with the given ID
 
 **Parameters**
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | id | Yes | long |
-| product | body | product | Yes | [Product](#product) |
+| id | path | ID os the Product | Yes | long |
+| product | body | Product data | Yes | [Product](#product) |
 
 **Responses**
 

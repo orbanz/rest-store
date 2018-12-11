@@ -78,8 +78,8 @@ public class OrderController {
         }
     }
 
-    @ApiOperation(value = "Get Order Data", notes = "Retreiving the data for the given id", response = OrderData.class)
     @GetMapping("/orders/{id}")
+    @ApiOperation(value = "Get Order Data", notes = "Retreiving the Order with the given ID", response = OrderData.class)
     public OrderData retrieveOrder(@ApiParam(required = true, name = "id", value = "ID os the Order") @PathVariable long id) {
         Optional<OrderData> order = orderDataRepository.findById(id);
 
