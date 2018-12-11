@@ -39,7 +39,12 @@ public class SwaggerConfig {
                         "* Once successfully built, you can run the service the following way:\n" +
                         "```\n" +
                         "        mvn spring-boot:run\n" +
-                        "```",
+                        "```" +
+                        "\n" +
+                        "The application can be accessed on the following url: " +
+                        "[http://localhost:8080/]: http://localhost:8080/" +
+                        "\n" +
+                        "## API DOCS",
                 "1.0",
                 "urn:tos",
                 new Contact("Zoltan Orban", "", "zoltan.orban@gmail.com"),

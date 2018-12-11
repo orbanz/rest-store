@@ -11,6 +11,8 @@ This application is Spring Boot application which has Tomcat 8 embedded. No Tomc
 ```
         mvn spring-boot:run
 ```
+The application can be accessed on the following url: [http://localhost:8080/]: http://localhost:8080/
+## API DOCS
 
 **Version:** 1.0
 
