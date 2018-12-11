@@ -23,82 +23,6 @@ zoltan.orban@gmail.com
 
 **License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-### /error
----
-##### ***GET***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-| 404 | Not Found |  |
-
-##### ***POST***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 201 | Created |  |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-| 404 | Not Found |  |
-
-##### ***PUT***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 201 | Created |  |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-| 404 | Not Found |  |
-
-##### ***DELETE***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 204 | No Content |  |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-
-##### ***OPTIONS***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 204 | No Content |  |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-
-##### ***PATCH***
-**Summary:** errorHtml
-
-**Responses**
-
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK | [ModelAndView](#modelandview) |
-| 204 | No Content |  |
-| 401 | Unauthorized |  |
-| 403 | Forbidden |  |
-
 ### /orders
 ---
 ##### ***GET***
@@ -239,18 +163,6 @@ zoltan.orban@gmail.com
 ### Models
 ---
 
-### ModelAndView  
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| empty | boolean |  | No |
-| model | object |  | No |
-| modelMap | object |  | No |
-| reference | boolean |  | No |
-| status | string |  | No |
-| view | [View](#view) |  | No |
-| viewName | string |  | No |
-
 ### OrderData  
 
 | Name | Type | Description | Required |
@@ -275,12 +187,6 @@ zoltan.orban@gmail.com
 | id | long |  | No |
 | name | string |  | No |
 | price | double |  | No |
-
-### View  
-
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| contentType | string |  | No |
 
 ### WebOrder  
 
