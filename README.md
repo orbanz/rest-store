@@ -114,7 +114,7 @@ zoltan.orban@gmail.com
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| product | body | Product data | Yes | [Product](#product) |
+| product | body | Product data | Yes | [ProductDTO](#productdto) |
 
 **Responses**
 
@@ -195,6 +195,13 @@ zoltan.orban@gmail.com
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
+| name | string |  | No |
+| price | double |  | No |
+
+### ProductDTO  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
 | name | string |  | No |
 | price | double |  | No |
 

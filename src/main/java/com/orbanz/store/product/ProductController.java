@@ -63,7 +63,8 @@ public class ProductController {
 
     @PostMapping("/products")
     @ApiOperation(value = "Create Product", notes = "Create the product with the given data")
-    public ResponseEntity<Object> createProduct(@ApiParam(required = true, name = "product", value = "Product data") @RequestBody Product product) {
+    public ResponseEntity<Object> createProduct(@ApiParam(required = true, name = "product", value = "Product data") @RequestBody ProductDTO productDto) {
+        Product product = new Product(productDto.getName(), productDto.getPrice());
         Product savedProduct = productRepository.save(product);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedProduct.getId()).toUri();
